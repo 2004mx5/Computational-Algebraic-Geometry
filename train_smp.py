@@ -9,7 +9,8 @@ from time import perf_counter
 from typing import Dict
 from pathlib import Path
 from pandas import DataFrame, read_csv, concat
-from getters import get_generation_function, get_criterion, get_model, get_synthetic_data
+from getters import get_generation_function, get_criterion, get_model
+from data_utils import get_synthetic_data
 DEVICE = device("cuda" if cuda.is_available() else "cpu")
 
 def train_all_folds(config):
