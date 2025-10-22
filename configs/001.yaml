@@ -1,0 +1,34 @@
+generation_function:
+  type: polynomial
+  # can be polynomial,
+  # if generating a polynomial, specify the degree, coefficient mean and standard deviation.
+  degree: 2
+  coeff_mean: 0
+  coeff_std: 1
+  # also generate synthetic datapoints. Feed them through the generation function for
+  # synthetic targets.
+  input_mean: 0
+  input_std: 1
+  # specify the number of generated datapoints.
+  num_data_points: 10
+
+model:
+  type: one_layer_polynomial
+  # can be one_layer_polynomial,
+  degree: 2
+  # activation function degree
+
+loss:
+  name: MSE
+  # can be MSE, 
+  reduction: mean
+  # can be none, sum, mean (for MSE loss)
+
+dataset_params:
+  data_acquisition: generate
+  # can be generate, from_csv. Either generate the data from a specified generation_function
+  # or recover the data from csv files.
+  input_dim: 10
+  # dimension of the input to the neural network (x)
+  folds: 1
+  # cross validation folds.
