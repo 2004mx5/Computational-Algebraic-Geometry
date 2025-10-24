@@ -23,15 +23,15 @@ class rand_poly():
                 # These are the coefficients.
                 # Need to: divide tensor elements by a function of the index in a parallelisable manner.
                 # Tensor size dim(x) x dim(x) x dim(x) x ... x dim(x) d times.
-                self.sequences = itertools.combinations_with_replacement([r for r in range(self.input_dim)], r = self.totaldeg)
                 self.num_terms = math.comb(self.input_dim + self.totaldeg -1, self.totaldeg)
                 self.coeffs = np.random.normal(self.mu, sigma, size = self.num_terms)
         else:
             print("Placeholder for manually specified co-efficients.")
     def eval(self, x):
+        sequences = itertools.combinations_with_replacement([r for r in range(self.input_dim)], r = self.totaldeg)
         px = 0
         i = 0
-        for seq in self.sequences:
+        for seq in sequences:
             px += self.coeffs[i]*np.prod(np.array([x[seq[i]] for i in range(len(seq))]))
             i += 1
         return px

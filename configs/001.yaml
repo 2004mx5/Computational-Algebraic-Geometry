@@ -32,3 +32,6 @@ dataset_params:
   # dimension of the input to the neural network (x)
   folds: 1
   # cross validation folds.
+  valid_data_ratio: 0.25
+  # if folds = 1, specify the amount of validation data we want as a fraction of the length
+  # of training data. Only works for data_acquisition = generate.
